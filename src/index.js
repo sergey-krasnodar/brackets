@@ -10,7 +10,7 @@ module.exports = function check(str, bracketsConfig) {
     ['6']: '5',
     ['7']: '7',
     ['8']: '8'
-  }
+  };
   let stack = [];
   let nextElement;
 
@@ -19,10 +19,12 @@ module.exports = function check(str, bracketsConfig) {
     let topElement = stack[stack.length - 1];
     if (topElement === '|' || topElement === '7' || topElement === '8') {
       nextElement = topElement;
+    } else {
+      nextElement = undefined;
     }
 
     if (openBracket.includes(currentSymbol) && currentSymbol !== nextElement) {
-      stack.push(currentSymbol)
+      stack.push(currentSymbol);
     } else {
       if (stack.length === 0) {
         return false;
@@ -36,4 +38,4 @@ module.exports = function check(str, bracketsConfig) {
     }
   }
   return stack.length === 0;
-}
+};
